@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-
+import 'package:test_getx/app/modules/home/views/edit_todo_view.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -28,6 +27,9 @@ class HomeView extends GetView<HomeController> {
                     controller.removeTodoAt(index);
                   },
                 ),
+                onTap: () {
+                  Get.to(() => EditTidoView(index: index, todo: todo));
+                },
                 onLongPress: () {
                   controller.toggleTodoStatus(index);
                 },
@@ -36,7 +38,7 @@ class HomeView extends GetView<HomeController> {
       }),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          controller.addNewTodo();
+          Get.to(() => EditTidoView());
         },
         child: Icon(Icons.add),
       ),
